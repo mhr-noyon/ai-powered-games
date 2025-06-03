@@ -16,10 +16,10 @@ export function BoardDesign({ difficulty, setDifficulty }) {
 
      const backGame = () => {
           setDifficulty(null);
-     }
+     };
      const giveupGame = () => {
           resetGame();
-     }
+     };
      const resetGame = () => {
           if (difficulty === "medium") {
                setIsMedium(true);
@@ -144,7 +144,7 @@ export function BoardDesign({ difficulty, setDifficulty }) {
                               >
                                    Restart
                               </button>
-                              
+
                               <button
                                    className="back-button"
                                    onClick={backGame}
@@ -178,7 +178,9 @@ export function Title({ difficulty }) {
      return (
           <div className="title-container">
                <h1 className="title">Tic Tac Toe 2025</h1>
-               <p className="subtitle">A rule based AI powered - Tic Tac Toe Game</p>
+               <p className="subtitle">
+                    A rule based AI powered - Tic Tac Toe Game
+               </p>
                {difficulty !== null && (
                     <>
                          <p>Difficulty: {difficulty.toUpperCase()}</p>
