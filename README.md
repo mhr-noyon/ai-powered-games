@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# 🎮 AI-Powered Games (2025)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A growing collection of small, polished games with rule-based / search AI opponents.
 
-## Available Scripts
+Currently included:
 
-In the project directory, you can run:
+- **Tic Tac Toe 2025** — classic 3×3, three difficulties
+- **Dot Connector 2025** — Connect-4–style 7×6 grid with gravity and AI
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ✅ Single-player vs AI (Human vs Computer)
+- 🎯 **Difficulty levels** across games
+     - **Easy** – lightweight / randomish moves
+     - **Medium** – shallow look-ahead
+     - **Hard** – Minimax with Alpha-Beta pruning
+- 🔁 One-click **Reset / Restart**
+- 👁️ **Turn indicator** (label & color match piece, with mini swatch)
+- 📱 Responsive UI
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🕹️ Included Games
 
-### `npm run build`
+### 1) Tic Tac Toe 2025
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Board**: 3×3
+- **Win**: three in a row (horizontal / vertical / diagonal)
+- **AI**:
+     - **Easy**: random valid move
+     - **Medium**: simple heuristics + short look-ahead
+     - **Hard**: **Minimax + Alpha-Beta** (optimal play)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Key files**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/components/ticTacToeGame/
+  ├─ BoardDesign.js
+  ├─ moveChecker.js
+  └─ aiTicTacToe.js
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2) Dot Connector 2025 (Connect-4 style)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Board**: 7 columns × 6 rows; pieces fall to the lowest empty cell in a column
+- **Win**: four in a row (horizontal / vertical / diagonal)
+- **Controls**: click a **column arrow** to drop a piece
+- **AI**:
+     - **Easy**: shallow search (depth ≈ 1)
+     - **Medium**: deeper search (depth ≈ 3)
+     - **Hard**: deeper search (depth ≈ 7) with Alpha-Beta pruning
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Key files**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/components/DotConnectors/
+  ├─ boardDesign.js
+  ├─ moveChecker.js
+  └─ aiDotConnector.js
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚀 Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1) Clone
 
-### Code Splitting
+```bash
+git clone https://github.com/mhr-noyon/ai-powered-games.git
+cd ai-powered-games
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2) Install
 
-### Analyzing the Bundle Size
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 3) Run (dev)
 
-### Making a Progressive Web App
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Open http://localhost:3000 in your browser.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📁 Project Structure (high level)
 
-### Deployment
+```
+src/
+├─ components/
+│  ├─ ticTacToeGame/
+│  │  ├─ BoardDesign.js
+│  │  ├─ moveChecker.js
+│  │  └─ aiTicTacToe.js
+│  └─ DotConnectors/
+│     ├─ boardDesign.js
+│     ├─ moveChecker.js
+│     └─ aiDotConnector.js
+├─ App.js
+└─ index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🕹️ How to Play
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Tic Tac Toe
+
+1. Choose a difficulty.
+2. Click an empty cell to place your mark.
+3. The board locks briefly while the AI thinks.
+4. Reset anytime.
+
+### Dot Connector (Connect-4)
+
+1. Choose a difficulty.
+2. Click the **arrow** above a column to drop a piece (gravity applies).
+3. Four in a row wins.
+4. Reset anytime.
+
+---
+
+## 🙋 Author
+
+- **Md. Hosain Rohman Noyon**  
+  GitHub: [@mhr-noyon](https://github.com/mhr-noyon)
+
+---

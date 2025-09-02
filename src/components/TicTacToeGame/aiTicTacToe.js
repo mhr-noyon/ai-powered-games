@@ -58,11 +58,11 @@ export function mediumMove(boardState, aiPiece, humanPiece) {
                     calculateWinner(boardState) === humanPiece &&
                     humanPiece !== null
                ) {
-                    let willBlock = Math.random();
-                    if (willBlock < 0.8) {
+                    let blockProbability = Math.random();
+                    if (blockProbability < 0.8) {
                          return index;
                     }
-                    console.log("Didn't block cause %", willBlock);
+                    console.log("Didn't block cause %", blockProbability);
                }
                boardState[index] = null;
           }

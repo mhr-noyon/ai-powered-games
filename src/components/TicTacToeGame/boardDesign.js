@@ -3,6 +3,22 @@ import { calculateWinner, isGameEnd } from "./moveChecker";
 import { AiTicTacToe, easyMove, mediumMove } from "./aiTicTacToe";
 const piece = { 0: "circle", 1: "cross" };
 
+export function Title({ difficulty }) {
+     return (
+          <div className="title-container">
+               <h1 className="title">Tic Tac Toe 2025</h1>
+               <p className="subtitle">
+                    A rule based AI powered - Tic Tac Toe Game
+               </p>
+               {difficulty !== null && (
+                    <>
+                         <p>Difficulty: {difficulty.toUpperCase()}</p>
+                    </>
+               )}
+          </div>
+     );
+}
+
 export function BoardDesign({ difficulty, setDifficulty }) {
      const [boardState, setBoardState] = useState(Array(9).fill(null));
      const [currentPlayer, setCurrentPlayer] = useState(0);
@@ -30,8 +46,11 @@ export function BoardDesign({ difficulty, setDifficulty }) {
           }
 
           setBoardState(Array(9).fill(null));
+          let rnd = Math.floor(Math.random() * 2);
+          console.log("Random value: ", rnd);
           setCurrentPlayer(0);
-          setHumanTurn(Math.floor(Math.random() * 2));
+          console.log("Current player: ", currentPlayer);
+          setHumanTurn(rnd);
           setIsAIFirstMove(true);
      };
 
@@ -62,7 +81,7 @@ export function BoardDesign({ difficulty, setDifficulty }) {
           console.log("All mode: ", isEasy, isMedium, isHard, isAIFirstMove);
           const newBoard = [...boardState];
 
-          if (isEasy || isAIFirstMove) {
+          if (isEasy || (isAIFirstMove && !isHard)) {
                console.log("Entered easy or isAIFirstMove");
                setIsAIFirstMove(false);
                index = easyMove(newBoard);
@@ -75,11 +94,13 @@ export function BoardDesign({ difficulty, setDifficulty }) {
                );
           } else if (isHard) {
                console.log("Entered hard");
+               console.log("---AI Piece: ", piece[currentPlayer]);
+               console.log("---Human Piece: ", piece[humanTurn]);
                index = AiTicTacToe(
                     newBoard,
                     piece[currentPlayer],
                     piece[humanTurn],
-                    3
+                    6
                );
           }
 
@@ -101,7 +122,9 @@ export function BoardDesign({ difficulty, setDifficulty }) {
                     {winner ? (
                          <>
                               <div className="win-message">
-                                   {piece[currentPlayer ^ 1].toUpperCase()}{" "}
+                                   {currentPlayer == humanTurn
+                                        ? "Computer "
+                                        : "Human "}
                                    wins!
                               </div>
                               <button
@@ -124,7 +147,7 @@ export function BoardDesign({ difficulty, setDifficulty }) {
                                    className="reset-button"
                                    onClick={resetGame}
                               >
-                                   Reset Game
+                                   Restart Game
                               </button>
                          </>
                     ) : (
@@ -172,20 +195,4 @@ export function BoardDesign({ difficulty, setDifficulty }) {
      };
 
      return <>{gameContainer()}</>;
-}
-
-export function Title({ difficulty }) {
-     return (
-          <div className="title-container">
-               <h1 className="title">Tic Tac Toe 2025</h1>
-               <p className="subtitle">
-                    A rule based AI powered - Tic Tac Toe Game
-               </p>
-               {difficulty !== null && (
-                    <>
-                         <p>Difficulty: {difficulty.toUpperCase()}</p>
-                    </>
-               )}
-          </div>
-     );
 }

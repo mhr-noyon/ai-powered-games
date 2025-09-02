@@ -1,23 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Title, BoardDesign } from "./boardDesign";
-import { ChooseDifficulty } from "./chooseDificulty";
+import { ChooseDifficulty } from "./chooseDificulty"; // <-- ensure filename matches
 import "./style.css";
+
+const VALID_DIFFICULTIES = new Set(["easy", "medium", "hard"]); // adjust to yours
+
 export function TicTacToe() {
-    const [difficulty, setDifficulty] = useState(null);
+     const [difficulty, setDifficulty] = useState(null);
 
-    useEffect(()=>{
+     const isValid = difficulty === null || VALID_DIFFICULTIES.has(difficulty);
 
-    },[difficulty])
-    return (
-        <>
-            <div className="tic-tac-toe">
-                <Title difficulty={difficulty}/>
-                {difficulty===null ? (
-                        <ChooseDifficulty setDifficulty={setDifficulty} />
-                    ) : 
-                    <BoardDesign difficulty={difficulty} setDifficulty={setDifficulty}/>
-                }
-            </div>
-        </>
-    );
+     return (
+          <div className="game-interface">
+               <Title difficulty={difficulty} />
+
+               {difficulty === null || !isValid ? (
+                    <ChooseDifficulty setDifficulty={setDifficulty} />
+               ) : (
+                    // key ensures fresh board state on difficulty change
+                    <BoardDesign
+                         key={difficulty}
+                         difficulty={difficulty}
+                         setDifficulty={setDifficulty}
+                    />
+               )}
+          </div>
+     );
 }
