@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ai-powered-games/static/css/main.c75d77fb.css",
+    "main.js": "/ai-powered-games/static/js/main.cd3afa80.js",
+    "static/js/453.0e9bfdc4.chunk.js": "/ai-powered-games/static/js/453.0e9bfdc4.chunk.js",
+    "static/media/logo.png": "/ai-powered-games/static/media/logo.fb6a05a279a2b2a6bf10.png",
+    "static/media/arrow.png": "/ai-powered-games/static/media/arrow.5bd1f1bc279660d75c87.png",
+    "index.html": "/ai-powered-games/index.html",
+    "main.c75d77fb.css.map": "/ai-powered-games/static/css/main.c75d77fb.css.map",
+    "main.cd3afa80.js.map": "/ai-powered-games/static/js/main.cd3afa80.js.map",
+    "453.0e9bfdc4.chunk.js.map": "/ai-powered-games/static/js/453.0e9bfdc4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c75d77fb.css",
+    "static/js/main.cd3afa80.js"
+  ]
+}
